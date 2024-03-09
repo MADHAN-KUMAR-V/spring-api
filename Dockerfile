@@ -19,5 +19,5 @@ RUN ls -l target
 # Expose port 8080
 EXPOSE 8080
 
-# Run the application
-CMD ["java", "-jar", "target/my-app.jar"]
+# Run the application using the full path to the JAR file
+CMD ["java", "-jar", "/app/target/my-app.jar"]
