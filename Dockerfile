@@ -1,16 +1,20 @@
+# Use the openjdk image as the base image
 FROM openjdk:21-slim
 
-# Install Maven
-RUN apt-get update && apt-get install -y maven
-
-# Set the working directory
+# Set the working directory within the container
 WORKDIR /app
 
 # Copy the project files into the container
 COPY . .
 
+# Install Maven
+RUN apt-get update && apt-get install -y maven
+
 # Build the application using Maven
 RUN mvn clean install
+
+# Display the contents of the target directory (for debugging purposes)
+RUN ls -l target
 
 # Expose port 8080
 EXPOSE 8080
